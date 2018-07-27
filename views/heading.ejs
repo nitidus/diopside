@@ -1,0 +1,33 @@
+<!-- Making sure the web-site will scale fine on mobiles-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Trying to force IE to perform at its best-->
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<!-- Meta description, aim for about 150 characters-->
+<meta name="description" content="This theme is a very beautiful and minimalistic theme with a gorgeous animation that will make the user remember your website and want to come back.">
+<!-- Stylesheets-->
+<link rel="stylesheet" href="<%= base %>vendors/css/font.min.css">
+<link rel="stylesheet" href="<%= base %>libs/materialize/css/materialize.min.css">
+<link rel="stylesheet" href="<%= base %>libs/textillate/assets/animate.css">
+<link rel="stylesheet" href="<%= base %>vendors/css/nas.min.css?v=2">
+<link rel="stylesheet" href="<%= base %>libs/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="<%= base %>libs/nouislider/nouislider.css">
+
+<% if (typeof sub != 'undefined') { %>
+  <% if (sub == 'service/tokenized/scheduled/media') { %>
+    <link rel="stylesheet" href="<%= base %>libs/fullcalendar/dist/fullcalendar.css">
+  <% }else if (sub == 'service/tokenized/scheduled/media/upload') { %>
+    <link rel="stylesheet" href="<%= base %>libs/fullcalendar/dist/fullcalendar.css">
+    <link rel="stylesheet" href="<%= base %>libs/cropperjs/dist/cropper.min.css">
+  <% } %>
+<% } %>
+
+<!-- Favicons-->
+<link rel="icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/favicons/manifest.json">
+<link rel="shortcut icon" href="favicon.ico">
+<meta name="msapplication-config" content="/favicons/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<!-- Site title-->
+<title>جم فالو</title>

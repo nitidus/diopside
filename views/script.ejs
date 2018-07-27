@@ -1,0 +1,45 @@
+<!-- Libraries-->
+<script src="<%= base %>libs/jquery/jquery.min.js"></script>
+<script src="<%= base %>libs/materialize/js/materialize.min.js"></script>
+<!-- script src="<%= base %>libs/textillate/jquery.textillate.js"></script -->
+<script src="<%= base %>libs/textillate/assets/jquery.lettering.js"></script>
+<script src="<%= base %>libs/textillate/assets/jquery.fittext.js"></script>
+<script src="<%= base %>libs/js-cookie-master/src/js.cookie.js"></script>
+
+<% if (typeof sub != 'undefined') { %>
+  <% if (sub == 'service/tokenized/scheduled/media') { %>
+    <script src="<%= base %>libs/moment/min/moment.min.js"></script>
+    <script src="<%= base %>libs/fullcalendar/dist/fullcalendar.min.js"></script>
+  <% }else if (sub == 'service/tokenized/scheduled/media/upload') { %>
+    <script src="<%= base %>libs/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<%= base %>libs/moment/min/moment.min.js"></script>
+    <script src="<%= base %>libs/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="<%= base %>libs/cropperjs/dist/cropper.min.js"></script>
+  <% }else if (sub == 'service/tokenized') { %>
+    <script src="<%= base %>libs/highcharts/code/highcharts.js"></script>
+    <script src="<%= base %>libs/highcharts/code/highcharts-more.js"></script>
+    <script src="<%= base %>libs/highcharts/code/modules/heatmap.js"></script>
+    <script src="<%= base %>libs/highcharts/code/modules/treemap.js"></script>
+    <script src="<%= base %>libs/highcharts/code/modules/exporting.js"></script>
+  <% }else if (sub == 'dashboard'){ %>
+    <script src="<%= base %>libs/highcharts/code/highcharts.js"></script>
+    <script src="<%= base %>libs/highcharts/code/highcharts-more.js"></script>
+    <script src="<%= base %>libs/highcharts/code/modules/exporting.js"></script>
+  <% }else if (sub == 'new-account' || sub == 'authorized') { %>
+    <script src="<%= base %>libs/wnumb/wNumb.js"></script>
+    <script src="<%= base %>libs/nouislider/nouislider.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQQwxmPEZPNchzrARjmY5RRpr5gzVqSWA">
+    </script>
+  <% }else if (sub == 'credit') { %>
+    <script src="<%= base %>libs/wnumb/wNumb.js"></script>
+    <script src="<%= base %>libs/nouislider/nouislider.js"></script>
+  <% } %>
+<% } %>
+
+<!-- Nas scripts-->
+<script src="<%= base %>vendors/js/config.min.js"></script>
+<script src="<%= base %>vendors/js/gem.min.js"></script>
+<script src="<%= base %>vendors/js/gem.init.min.js"></script>
+<script src="<%= base %>libs/flat-surface-shader/deploy/fss.js"></script>
+<script src="<%= base %>vendors/js/triangles-<%= trianglesMode %>.js"></script>

@@ -1,0 +1,24 @@
+<!-- Main content-->
+<main class="main light-bg" id="main">
+  <section class="section scrollspy">
+    <div class="container">
+      <div class="row">
+        <% if (tokenizedService.status) { %>
+          <% service = servicesSession[tokenizedService.index] %>
+
+          <%- include('tokenized-unpaid/service-tabs'); %>
+
+          <%- include('tokenized-unpaid/checkout-details'); %>
+
+          <%- include('tokenized-unpaid/gateway-chooser'); %>
+
+        <% }else{ %>
+          <div id="checkout-no-details" class="col s12 right direction-rtl">
+            <h3 class="bold center">سرویس انتخابی شما وجود ندارد.</h3>
+            <div class="no-service-in-basket margin-center"></div>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,84 @@
+<div class="parallax-container">
+  <div class="parallax purple-heart-light">
+    <div class="heading">
+      <i class="fa fa-twitter" aria-hidden="true"></i>
+      <h3 class="bold">توییتر</h3>
+      <div class="details">
+        <span>
+          <% if (twitterServices.length > 1){ %>
+            <strong><%= twitterServices.length %> سرویس‌های فعال</strong>
+          <% }else{ %>
+            <strong><%= twitterServices.length %> سرویس فعال</strong>
+          <% } %>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<!--div class="section medium-white services">
+  <div class="row container">
+    <% twitterServices.forEach(function(service){ %>
+      <% today = (new Date()).getTime() %>
+      <% created_at = (new Date(service.created_at)).getTime() %>
+      <% date_difference = (today - created_at) / 1000 %>
+      <% created_at_human_readable = '' %>
+
+      <% if (date_difference <= 60) { %>
+        <% created_at_human_readable += 'چند لحظه قبل'; %>
+      <% }else if (date_difference > 60 && date_difference < (60 * 60)) { %>
+        <% created_at_human_readable += Math.floor(date_difference / 60) + ' دقیقه قبل'; %>
+      <% }else if (date_difference >= (60 * 60) && date_difference < (60 * 60 * 24)) { %>
+        <% created_at_human_readable += Math.floor(date_difference / (60 * 60)) + ' ساعت قبل'; %>
+      <% }else if (date_difference >= (60 * 60 * 24) && date_difference < (60 * 60 * 24 * 30)) { %>
+        <% created_at_human_readable += Math.floor(date_difference / (60 * 60 * 24)) + ' روز قبل'; %>
+      <% }else if (date_difference >= (60 * 60 * 24 * 30) && date_difference < (60 * 60 * 24 * 30 * 12)) { %>
+        <% created_at_human_readable += Math.floor(date_difference / (60 * 60 * 24 * 30)) + ' ماه قبل'; %>
+      <% }else if (date_difference >= (60 * 60 * 24 * 12)) { %>
+        <% created_at_human_readable += Math.floor(date_difference / (60 * 60 * 24 * 30 * 12)) + ' سال قبل'; %>
+      <% } %>
+      <div class="aside white" data-hash-id="<%= service._id %>">
+        <a href="/profile/accounts/<%= service._id %>">
+          <div class="photo">
+            <div class="service-photo" style="background-image: url(<%= service.owner.data.profile_picture %>);"></div>
+          </div>
+          <div class="details">
+            <h3 class="bold"><%= service.owner.data.username %></h3>
+            <span>
+                <strong><%= (service.owner.data.counts.media).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %></strong> پست‌ها
+            </span>
+            <span>
+              <strong><%= (service.owner.data.counts.follows).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %></strong> فالوئرها
+            </span>
+            <span>
+              <strong><%= (service.owner.data.counts.followed_by).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %></strong> فالوئینگ‌ها
+            </span>
+            <p>
+              <%= service.owner.data.bio %>
+            </p>
+          </div>
+          <div class="splitter"></div>
+          <div class="details secondary-details">
+            <h3><%= created_at_human_readable %></h3>
+            <span>
+              <strong><%= (service.target.followers).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %></strong> هدف‌گذاری شده
+            </span>
+            <span>
+              <strong>2,324</strong> بدست آمده
+            </span>
+            <span>
+              <i class="fa fa-circle-o" aria-hidden="true"></i>
+              <% if (typeof service.customized != 'undefined'){ %>
+                Customized
+              <% }else{ %>
+                <%= service.plan %>
+              <% } %>
+            </span>
+            <p>
+              Hashtags, Locations And Periods
+            </p>
+          </div>
+        </a>
+      </div>
+    <% }); %>
+  </div>
+</div-->

@@ -1,0 +1,92 @@
+<% if (typeof currentUser.balance != 'undefined'){ %>
+  <div class="parallax-container direction-rtl">
+    <div class="parallax dark-orchid">
+      <div class="heading">
+        <i class="fa fa-money" aria-hidden="true"></i>
+        <h3 class="bold"><%= (currentUser.balance).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> <sub>تومان</sub></h3>
+        <div class="details">
+          <span>
+            <strong>موجودی کنونی</strong>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section medium-white credits direction-rtl">
+    <div class="row container">
+      <ul class="collection">
+        <% credits.forEach(function(credit){ %>
+          <li class="collection-item avatar">
+            <%
+              var trending = {};
+
+              if (typeof credit.balance.previous != 'undefined'){
+                if (credit.balance.new >= credit.balance.previous){
+                  trending.mode = 'trending_up'
+                  trending.color = 'green'
+                }else{
+                  trending.mode = 'trending_down'
+                  trending.color = 'red'
+                }
+              }else{
+                trending.mode = 'trending_up'
+                trending.color = 'green'
+              }
+
+              today = (new Date()).getTime()
+              credit_date = (new Date(credit.created_at)).getTime()
+              date_difference = (today - credit_date) / 1000
+              created_at_human_readable = ''
+
+              if (date_difference <= 60) {
+                created_at_human_readable += 'چند لحظه قبل';
+              }else if (date_difference > 60 && date_difference < (60 * 60)) {
+                created_at_human_readable += Math.floor(date_difference / 60) + ' دقیقه قبل';
+              }else if (date_difference >= (60 * 60) && date_difference < (60 * 60 * 24)) {
+                created_at_human_readable += Math.floor(date_difference / (60 * 60)) + ' ساعت قبل';
+              }else if (date_difference >= (60 * 60 * 24) && date_difference < (60 * 60 * 24 * 30)) {
+                created_at_human_readable += Math.floor(date_difference / (60 * 60 * 24)) + ' روز قبل';
+              }else if (date_difference >= (60 * 60 * 24 * 30) && date_difference < (60 * 60 * 24 * 30 * 12)) {
+                created_at_human_readable += Math.floor(date_difference / (60 * 60 * 24 * 30)) + ' ماه قبل';
+              }else if (date_difference >= (60 * 60 * 24 * 12)) {
+                created_at_human_readable += Math.floor(date_difference / (60 * 60 * 24 * 30 * 12)) + ' سال قبل';
+              }
+            %>
+            <i class="material-icons circle <%= trending.color %>"><%= trending.mode %></i>
+            <h3 class="bold"><%= credit.payment.content.price %> تومان</h3>
+            <span>new balance: <strong><%= credit.balance.new %></strong> تومان</span>
+            <% if (typeof credit.balance.previous != 'undefined'){ %>
+              <span>موجودی قبلی: <strong><%= credit.balance.previous %></strong> تومان</span>
+            <% } %>
+            <span>در <strong><%= credit.payment.gateway %></strong></span>
+            <div class="secondary-content">
+              <h4><%= created_at_human_readable %></h4>
+            </div>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+  </div>
+<% }else{ %>
+  <div class="parallax-container direction-rtl">
+    <div class="parallax dark-orchid">
+      <div class="heading">
+        <i class="fa fa-money" aria-hidden="true"></i>
+        <h3 class="bold">۰ <sub>تومان</sub></h3>
+        <div class="details">
+          <span>
+            <strong>شما می‌توانید موجودی کیف پول خود را افزایش بدهید.</strong>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section medium-white credits direction-rtl">
+    <div class="row container">
+      <div id="wallet-no-credit" class="col s12 right direction-rtl">
+        <h3 class="bold center">هیچ تاریخچه‌ای برای کیف پولتان موجود نیست.</h3>
+        <div class="no-credit-in-wallet margin-center"></div>
+      </div>
+    </div>
+  </div>
+<% } %>

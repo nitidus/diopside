@@ -1,0 +1,108 @@
+<% var stories = constants.stories; %>
+
+<%
+  var lastStories = [];
+
+  if (stories.length > 5){
+    for(var i = stories.length - 1; i > stories.length - 6; i--){
+      lastStories.push(stories[i]);
+    }
+  }else{
+    for(var i = stories.length - 1; i >= 0; i--){
+      lastStories.push(stories[i]);
+    }
+  }
+%>
+
+<section class="section scrollspy" id="stories">
+    <div class="container">
+        <div class="row center">
+            <div class="col s12 right">
+                <h2>آخرین مطالب بلاگ</h2>
+                <h3>همیشه از آخرین اخبار ما مطلع باشید</h3>
+                <ul class="posts">
+                  <% for(var i = 0; i < lastStories.length; i++){ %>
+                    <% var storyFileName = lastStories[i].title.toLowerCase(); %>
+                    <% storyFileName = storyFileName.replace(/ /g, '-'); %>
+
+                    <li>
+                        <a class="modal-trigger" href="#<%= storyFileName %>" data-slug="<%= storyFileName %>">
+                          <%= lastStories[i].title %>
+                        </a>
+                    </li>
+                  <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="posts-covers">
+      <% for(var i = 0; i < lastStories.length; i++){ %>
+        <% var storyFileName = lastStories[i].title.toLowerCase(); %>
+        <% storyFileName = storyFileName.replace(/ /g, '-'); %>
+
+        <div class="<%= storyFileName %>" style="background-image: url(<%= lastStories[i].background.photo %>)"></div>
+      <% } %>
+    </div>
+
+    <% for(var i = 0; i < lastStories.length; i++){ %>
+      <% var storyFileName = lastStories[i].title.toLowerCase(); %>
+      <% storyFileName = storyFileName.replace(/ /g, '-'); %>
+      <% storyCreatedAt = new Date(lastStories[i].created_at); %>
+
+      <!-- <%= stories[i].title %> -->
+      <div class="modal table-section bottom-sheet" id="<%= storyFileName %>">
+          <div class="modal-close absolute">&times;</div>
+          <div class="modal-content">
+              <div class="container">
+                <div class="row">
+                    <div class="col s12 m10 offset-m1 l6 offset-l3 flow-text right">
+                        <h1><%= lastStories[i].title %></h1><span class="author">
+                          <% if (gem.isGem){ %>
+                            <%- gem.profile %>
+                          <% }else{ %>
+                            <img src="<%= gem.profile %>" alt="<%= gem.name %>">
+                          <% } %>
+
+                          by <%= gem.name %> on</span>
+                        <time datetime="2016-12-15T21:00">
+                          <%= storyCreatedAt.getDate() + '/' + (storyCreatedAt.getMonth() + 1) + '/' + storyCreatedAt.getFullYear() %>
+                        </time>
+                    </div>
+                </div>
+
+                <%- lastStories[i].content %>
+
+                <div class="row flow-text modal-nav-container">
+                  <% if (i == 0){ %>
+                    <% var nextStoryFileName = lastStories[i + 1].title.toLowerCase(); %>
+                    <% nextStoryFileName = nextStoryFileName.replace(/ /g, '-'); %>
+
+                    <div class="col s12 l6 offset-l6 right">
+                        <a class="right modal-nav" href="#<%= nextStoryFileName %>" data-next-modal="<%= nextStoryFileName %>">Next story &rarr;</a>
+                    </div>
+                  <% }else if (i == lastStories.length - 1){ %>
+                    <% var previousStoryFileName = lastStories[i - 1].title.toLowerCase(); %>
+                    <% previousStoryFileName = previousStoryFileName.replace(/ /g, '-'); %>
+
+                    <div class="col s12 l6 margin-on-medium-and-down right">
+                        <a class="modal-nav" href="#<%= previousStoryFileName %>" data-previous-modal="<%= previousStoryFileName %>">&larr; Previous story</a>
+                    </div>
+                  <% }else{ %>
+                    <% var nextStoryFileName = lastStories[i + 1].title.toLowerCase(); %>
+                    <% var previousStoryFileName = lastStories[i - 1].title.toLowerCase(); %>
+                    <% nextStoryFileName = nextStoryFileName.replace(/ /g, '-'); %>
+                    <% previousStoryFileName = previousStoryFileName.replace(/ /g, '-'); %>
+
+                    <div class="col s12 l6 margin-on-medium-and-down right">
+                        <a class="modal-nav" href="#<%= previousStoryFileName %>" data-previous-modal="<%= previousStoryFileName %>">&larr; Previous story</a>
+                    </div>
+                    <div class="col s12 l6 right">
+                        <a class="right modal-nav" href="#<%= nextStoryFileName %>" data-next-modal="<%= nextStoryFileName %>">Next story &rarr;</a>
+                    </div>
+                  <% } %>
+                </div>
+              </div>
+          </div>
+      </div>
+    <% } %>
+</section>

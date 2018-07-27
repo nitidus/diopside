@@ -1,0 +1,42 @@
+<!-- Navigation-->
+<div class="navbar-fixed zero-height">
+    <nav class="<%= navMode %>">
+        <div class="nav-wrapper">
+            <div class="row direction-rtl">
+                <div class="col s12 l6 right">
+                    <div class="brand-logo"><a href="/">جم‌فالو</a></div>
+                </div>
+                <div class="col s12 l6 right">
+                    <ul class="table-of-contents">
+                        <li class="hide-on-med-and-down">
+                            <a href="/#cases">ویژگی‌های کلیدی</a>
+                        </li>
+                        <li class="hide-on-med-and-down">
+                            <a href="/#services">سرویس‌ها</a>
+                        </li>
+                        <li class="hide-on-med-and-down">
+                            <a href="/#stories">بلاگ</a>
+                        </li>
+                        <% if (page != 'login' && page != 'signup') { %>
+                          <% if (page != 'profile') { %>
+                            <% if (page != 'profile-home') { %>
+                              <li>
+                                <a class="menu" href="/login">سامانه</a>
+                              </li>
+                            <% } else { %>
+                              <li>
+                                <a class="menu no-border" href="/profile"><i class="fa fa-circle-o" aria-hidden="true"></i></a>
+                              </li>
+                            <% } %>
+                          <% } else { %>
+                            <li>
+                              <a data-activates="slide-out" class="menu side-menu no-border"><i class="fa fa-circle-o" aria-hidden="true"></i></a>
+                            </li>
+                          <% } %>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

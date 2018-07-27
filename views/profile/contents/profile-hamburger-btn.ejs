@@ -1,0 +1,24 @@
+<div class="fixed-action-btn horizontal click-to-toggle">
+  <a class="btn-floating btn-large purple-heart-medium-light">
+    <i class="material-icons">contacts</i>
+  </a>
+  <ul>
+    <% if (typeof service != 'undefined'){ %>
+      <% if (service != null && sub == 'service/tokenized/scheduled/media') { %>
+        <li><a href="/profile/accounts/<%= service._id %>/scheduled/media/upload" class="btn-floating purple-heart-medium-light" title="Add Scheduled Photo"><i class="material-icons">photo</i></a></li>
+      <% } %>
+      <% if (service != null && sub == 'service/tokenized/scheduled/media/upload') { %>
+        <li><a href="/profile/accounts/<%= service._id %>/scheduled/media" class="btn-floating purple-heart-medium-light" title="Scheduled Photos"><i class="material-icons">event</i></a></li>
+      <% } %>
+      <% if (service != null && sub == 'service/tokenized') { %>
+        <li><a href="/profile/accounts/<%= service._id %>/scheduled/media/upload" class="btn-floating purple-heart-medium-light" title="Add Scheduled Photo"><i class="material-icons">photo</i></a></li>
+        <li><a href="/profile/accounts/<%= service._id %>/scheduled/media" class="btn-floating purple-heart-medium-light" title="Scheduled Photos"><i class="material-icons">event</i></a></li>
+      <% } %>
+    <% } %>
+    <li><a href="/profile/wallet/new" class="btn-floating purple-heart-medium-light" title="Add credit"><i class="material-icons">payment</i></a></li>
+    <% if (sub != 'unpaid'){ %>
+      <li><a href="/profile/accounts/unpaid" class="btn-floating purple-heart-medium-light" title="Shopping basket"><i class="material-icons">shopping_basket</i></a></li>
+    <% } %>
+    <li><a href="/profile/accounts/new" class="btn-floating purple-heart-medium-light" title="Add new service"><i class="material-icons">add</i></a></li>
+  </ul>
+</div>

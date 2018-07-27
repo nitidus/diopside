@@ -1,0 +1,21 @@
+<div id="media-upload-schedule" class="col s12 right direction-rtl">
+  <h3 class="bold service-title">تنظیم زمان‌بندی پست</h3>
+  <div class="col s12 col-margin right">
+    <div id="scheduled-media-upload-calendar" data-hash="<%= service._id %>"></div>
+  </div>
+  <div class="col s12 center">
+      <button disabled class="btn btn-large btn-flat waves-effect blue-purple-gradient waves-dark white-text disabled" data-hash="<%= service._id %>" id="save-schedule-btn" type="submit">ذخیره زمان‌بندی پست</button>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="change-event-modal" class="modal top-sheet modal-fixed-footer">
+    <div class="modal-content">
+      <h4>سر‌تیتر باز‌شونده</h4>
+      <p>متن انتخابی</p>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-red btn-flat change-disagree">نپذیرفتن</a>
+      <a class="modal-action modal-close waves-effect waves-green btn-flat change-agree">پذیرفتن</a>
+    </div>
+  </div>
+</div>

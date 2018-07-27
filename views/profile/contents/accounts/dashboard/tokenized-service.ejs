@@ -1,0 +1,88 @@
+<%
+  var subdirectory = {};
+
+  if (sub == 'service/tokenized') {
+    subdirectory.address = 'tokenized-service/dashboard';
+    subdirectory._id = 'dashboard';
+    subdirectory.backgroundColor = 'light-bg';
+
+    if (analysis.length > 0){
+      groupedByIDAnalysis = {};
+
+      for (var i = 0; i < analysis.length; i++) {
+        if (!(analysis[i].service._id in groupedByIDAnalysis)){
+          groupedByIDAnalysis[analysis[i].service._id] = [analysis[i]];
+        }else{
+          groupedByIDAnalysis[analysis[i].service._id].push(analysis[i]);
+        }
+      }
+
+      currentServiceAnalysis = groupedByIDAnalysis[service._id];
+
+      currentServiceLastAnalysis = currentServiceAnalysis[0];
+    }else{
+      currentServiceLastAnalysis = {
+        gained_follower: service.owner.followerCount
+      };
+    }
+
+    times = []
+    weekday = [
+      {
+        name: 'Sunday',
+        value: 0
+      },
+      {
+        name: 'Monday',
+        value: 0
+      },
+      {
+        name: 'Tuesday',
+        value: 0
+      },
+      {
+        name: 'Wednesday',
+        value: 0
+      },
+      {
+        name: 'Thursday',
+        value: 0
+      },
+      {
+        name: 'Friday',
+        value: 0
+      },
+      {
+        name: 'Saturday',
+        value: 0
+      }
+    ]
+  }else if (sub == 'service/tokenized/scheduled/media') {
+    subdirectory.address = 'tokenized-service/scheduled-media';
+    subdirectory._id = 'scheduled-media';
+    subdirectory.backgroundColor = 'white';
+  }else if (sub == 'service/tokenized/scheduled/media/upload') {
+    subdirectory.address = 'tokenized-service/scheduled-media-upload';
+    subdirectory._id = 'scheduled-media-upload';
+    subdirectory.backgroundColor = 'light-bg';
+  }
+%>
+
+<!-- Main content-->
+<main class="main <%= subdirectory.backgroundColor %>" id="main">
+  <section class="section scrollspy">
+    <div class="container">
+      <div class="row" id="<%= subdirectory._id %>">
+        <% if (service != null){ %>
+          <%- include(subdirectory.address); %>
+        <% }else{ %>
+          <div id="service-in-details" class="col s12">
+            <h3 class="bold center service-title">هیچ سرویسی موجود نیست.</h3>
+            <div class="no-service-available margin-center"></div>
+            <h4 class="bold center">شاید سرویس‌هایتان حذف شده است.</h4>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </section>
+</main>

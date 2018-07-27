@@ -1,0 +1,19 @@
+<% var prototypes = constants.prototypes; %>
+
+<% if (sub == 'accounts') { %>
+  <%- include('accounts/dashboard'); %>
+<% } %>
+
+<% if (sub == 'unpaid') { %>
+  <%- include('accounts/unpaid'); %>
+<% } %>
+
+<% if (sub == 'unpaid/tokenized') { %>
+  <%- include('accounts/unpaid/tokenized-unpaid'); %>
+<% } %>
+
+<% if (sub == 'service/tokenized' || sub == 'service/tokenized/scheduled/media' || sub == 'service/tokenized/scheduled/media/upload') { %>
+  <%- include('accounts/dashboard/tokenized-service'); %>
+<% } %>
+
+<%- include('profile-hamburger-btn'); %>

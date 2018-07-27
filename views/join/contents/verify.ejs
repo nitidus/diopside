@@ -1,0 +1,20 @@
+<% if (data.meta.code == 200){ %>
+  <div id="verified-successfully" class="col s12">
+    <h3 class="bold">تبریک می‌گوییم!</h3>
+    <div class="col s9 margin-center">
+      <div class="verified-successfully margin-center"></div>
+      <h4 class="bold center">حساب کاربری شما با موفقیت فعال گردید.</h4>
+    </div>
+    <div class="col s12 center">
+        <a href="/login" class="btn btn-large btn-flat waves-effect blue-purple-gradient waves-dark white-text" id="login-now-btn" type="submit">همین حالا وارد شوید</a>
+    </div>
+  </div>
+<% }else{ %>
+  <div id="no-verify-code" class="col s12">
+    <h3 class="bold">صمیمانه عذر می‌خواهیم!</h3>
+    <div class="col s9 margin-center">
+      <div class="no-verify-code margin-center"></div>
+      <h4 class="bold center"><%= data.meta.error_message %></h4>
+    </div>
+  </div>
+<% } %>

@@ -1,0 +1,36 @@
+<!-- Main content-->
+<main class="main light-bg" id="main">
+  <section class="section scrollspy">
+    <div class="container">
+      <div class="row">
+        <% if (typeof servicesSession != 'undefined'){ %>
+          <div id="unpaid-list-container" class="col s12 right direction-rtl">
+            <% if (servicesSession.length > 1){ %>
+              <h3 class="bold">شما به راحتی می‌توانید خرید <%= servicesSession.length %> سرویس پرداخت‌نشده خود را نهایی کنید.</h3>
+            <% }else{ %>
+              <h3 class="bold">شما به راحتی می‌توانید خرید رویس پرداخت‌نشده خود را نهایی کنید.</h3>
+            <% } %>
+
+          <ul id="unpaid-list" class="collection">
+            <% servicesSession.forEach(function(service){ %>
+              <li class="collection-item avatar">
+                <img src="<%= service.owner.data.picture %>" alt="<%= service.owner.data.fullName %>" class="circle">
+                <h3 class="title"><%= service.owner.data.username %></h3>
+                <span class="inv-month"><%= service.invoice.month %></span>
+                <span class="inv-price">$<%= service.price.total %></span>
+                </p>
+                <a href="/profile/accounts/unpaid/<%= service.owner.access_token %>" class="secondary-content checkout-btn" title="پرداخت برای حساب <%= service.owner.data.username %>"><i class="material-icons">payment</i></a>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+        <% }else{ %>
+          <div id="no-unpaid" class="col s12 right direction-rtl">
+            <h3 class="bold center">سبد خرید شما خالی است.</h3>
+            <div class="no-service-in-basket margin-center"></div>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <% if (auth == 'verify') { %>
+      <%- include('heading', {base: '../'}); %>
+    <% }else{ %>
+      <%- include('heading', {base: './'}); %>
+    <% } %>
+  </head>
+  <body>
+    <% if (auth == 'login') { %>
+    <%- include('join/content', {page: 'login'}); %>
+    <% } %>
+    <% if (auth == 'signup') { %>
+    <%- include('join/content', {page: 'signup'}); %>
+    <% } %>
+    <% if (auth == 'verify') { %>
+    <%- include('join/content', {page: 'verify'}); %>
+    <% } %>
+
+    <%- include('footer-content', {footerMode: 'blue-purple-gradient'}); %>
+
+    <% if (auth == 'verify') { %>
+      <%- include('script', {trianglesMode: 'i', base: '../'}); %>
+    <% }else{ %>
+      <%- include('script', {trianglesMode: 'i', base: './'}); %>
+    <% } %>
+  </body>
+</html>

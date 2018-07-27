@@ -1,0 +1,46 @@
+<div class="loading-overlay" id="loading-overlay"></div>
+<!-- Pace loader-->
+<div class="pace" id="pace">
+    <div class="pace-activity"></div>
+</div>
+
+<%- include('../navigation', {navMode: 'dark-back'}); %>
+
+<!-- Main content-->
+<main class="main" id="main">
+  <% if (page == 'verify') { %>
+    <section class="section scrollspy">
+      <div class="container">
+        <div class="row">
+          <%- include('contents/verify'); %>
+        </div>
+      </div>
+    </section>
+  <% }else{ %>
+    <div class="row bokeh-bg">
+      <div class="tab-col col s12">
+        <ul class="tabs">
+          <li class="tab col s3">
+            <% if (page == 'signup') { %>
+              <a class="active" href="#signup">ثبت نام</a>
+            <% } else { %>
+              <a href="#signup">ثبت نام</a>
+            <% } %>
+          </li>
+          <li class="tab col s3">
+            <% if (page == 'login') { %>
+              <a class="active" href="#login">ورود به حساب کاربری</a>
+            <% } else { %>
+              <a href="#login">ورود به حساب کاربری</a>
+            <% } %>
+          </li>
+        </ul>
+      </div>
+
+      <%- include('contents/login'); %>
+
+      <%- include('contents/signup'); %>
+
+    </div>
+  <% } %>
+</main>

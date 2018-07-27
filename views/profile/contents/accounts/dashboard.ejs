@@ -1,0 +1,22 @@
+<!-- Main content-->
+<%
+  function checkInstagramServices(service) {
+      return service.type.english.toLowerCase() == 'instagram';
+  }
+
+  function checkTwitterServices(service) {
+      return service.type.english.toLowerCase() == 'twitter';
+  }
+
+ instagramServices = services.filter(checkInstagramServices)
+
+ twitterServices = services.filter(checkTwitterServices)
+ %>
+
+<% if (instagramServices.length > 0){ %>
+  <%- include('dashboard/instagram-services'); %>
+<% } %>
+
+<% if (twitterServices.length > 0){ %>
+  <%- include('dashboard/twitter-services'); %>
+<% } %>

@@ -1,0 +1,203 @@
+<% var prototypes = constants.prototypes; %>
+
+<% if (service != null){ %>
+  <%
+    function readableHoursFormatDate(date) {
+      var d = new Date(date);
+
+      date = d.toString();
+
+      var hh = d.getHours();
+      var m = d.getMinutes();
+      var dd = "قبل از ظهر";
+      var h = hh;
+
+      if (h >= 12) {
+        h = hh - 12;
+        dd = "بعد از ظهر";
+      }
+
+      if (h == 0) {
+        h = 12;
+      }
+
+      m = m < 10 ? "۰" + m : m;
+
+      h = (h < 10)? ("۰" + h) : h;
+
+      var pattern = h + ":" + m;
+
+      pattern += " " + dd;
+
+      return pattern;
+    }
+
+    function getPerfect(totals){
+      perfect = {
+        value: 0
+      }
+
+      for(var i = 0; i < totals.length; i++){
+        if (totals[i].value > perfect.value){
+          perfect = totals[i]
+        }
+      }
+
+      return perfect
+    }
+
+    if (analysis.length > 0){
+      groupedAnalysis = {};
+      perfectTime = '';
+
+      for (var i = 0; i < analysis.length; i++) {
+        if (!(analysis[i].service.micro_service.type in groupedAnalysis)){
+          groupedAnalysis[analysis[i].service.micro_service.type] = [analysis[i]];
+        }else{
+          groupedAnalysis[analysis[i].service.micro_service.type].push(analysis[i]);
+        }
+
+        analysisCreatedAt = new Date(analysis[i].created_at)
+        analysisCreatedAtInTime = analysisCreatedAt.getTime()
+
+        if (typeof times.length > 0){
+          for(var j = 0; j < times; j++){
+            if (times[j].amount >= (analysisCreatedAtInTime + 1000 * 60 * 10) && times[j].amount <= (analysisCreatedAtInTime - 1000 * 60 * 10)){
+              times[j].value++
+            }else{
+              times.push({
+                amount: analysisCreatedAtInTime,
+                value: 1
+              })
+            }
+          }
+        }else{
+          times.push({
+            amount: analysisCreatedAtInTime,
+            value: 1
+          })
+        }
+
+        weekday[analysisCreatedAt.getDay()].value++
+      }
+
+      created_at = new Date(service.created_at).getTime()
+      targeted_at = new Date(service.target.period).getTime()
+      today = new Date().getTime()
+      totalDays = Math.floor((targeted_at - created_at) / (1000 * 60 * 60 * 24))
+      daysRemain = {
+        decimal: Math.floor((today - created_at) / (1000 * 60 * 60 * 24)),
+        percent: Math.floor(( ((today - created_at) / (1000 * 60 * 60 * 24)) * 100) / totalDays)
+      }
+      totalDaysRemain = totalDays - daysRemain.decimal
+
+      perfectDay = getPerfect(weekday);
+      perfectPublicDay = perfectDay.name;
+
+      perfectTime = getPerfect(times);
+      readablePerfectTime = readableHoursFormatDate(perfectTime.amount);
+    }else{
+      created_at = new Date(service.created_at).getTime()
+      targeted_at = new Date(service.target.period).getTime()
+      totalDays = Math.floor((targeted_at - created_at) / (1000 * 60 * 60 * 24))
+      totalDaysRemain = totalDays;
+
+      perfectPublicDay = 'تحلیلی وجود ندارد';
+      readablePerfectTime = 'تحلیلی وجود ندارد';
+    }
+  %>
+
+  <div id="service-in-details" class="col s12 right direction-rtl">
+    <h3 class="bold service-title">جزئیات سرویس <%= service.type.persian %>ی <%= service.owner.username %>:</h3>
+
+    <% if (analysis.length > 0){ %>
+      <div class="col s12 l8 col-margin right">
+        <div id="weekly-services"></div>
+      </div>
+    <% } %>
+
+    <% if (analysis.length > 0){
+      recommendedDetailLayoutSize = 's12 l4';
+    }else{
+      recommendedDetailLayoutSize = 's12';
+    } %>
+
+    <div class="col <%= recommendedDetailLayoutSize %> right">
+      <div id="recommended-time" class="col-margin">
+        <h5>بهترین زمان برای نشر پست</h5>
+        <div class="recommend-detail">
+          <i class="small material-icons">access_time</i>
+          <span><%= readablePerfectTime %></span>
+        </div>
+      </div>
+      <div id="recommended-day" class="col-margin">
+        <h5>بهترین روز برای نشر پست</h5>
+        <div class="recommend-detail">
+          <i class="small material-icons">date_range</i>
+          <span><%= perfectPublicDay %></span>
+        </div>
+      </div>
+    </div>
+
+    <% if (analysis.length > 0){ %>
+      <div class="col s12 l6 col-margin right">
+        <div id="hashtags-service-details">
+          <div id="hashtags-in-detail"></div>
+        </div>
+      </div>
+      <div class="col s12 l6 col-margin right">
+        <div id="locations-service-details">
+          <div id="locations-in-detail"></div>
+        </div>
+      </div>
+    <% } %>
+
+
+
+    <div class="col s12 col-margin right">
+      <div id="target-period-detail">
+        <h5>بازه زمانی هدف</h5>
+        <div class="recommend-detail">
+          <i class="small material-icons">access_alarm</i>
+          <span><%= prototypes._convertDigitsToPersian(totalDaysRemain.toString()) %> روز باقی مانده</span>
+          <div class="progress semi-safron-mango tooltipped" data-position="bottom" data-delay="50" data-tooltip="totalDaysRemain">
+            <div class="determinate saffron-mango" style="width: <%= (analysis.length > 0)? daysRemain.percent: 100 %>%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% if (analysis.length > 0){ %>
+      <div class="col s12 l6 col-margin right">
+        <div id="periods-service-details">
+          <div id="periods-in-detail"></div>
+        </div>
+      </div>
+    <% } %>
+
+    <div class="col s12 l6 col-margin right">
+      <div id="target-follower-detail" class="col s12 right">
+        <h5>فالوئرهای هدف</h5>
+        <div class="recommend-detail">
+          <i class="small material-icons">insert_chart</i>
+          <span><%= ((service.target.followers > 1000)? prototypes._convertDigitsToPersian((service.target.followers / 1000).toFixed(1).toString()) + ' هزار' : prototypes._convertDigitsToPersian(service.target.followers.toString()) ) %></span>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 l6 col-margin right">
+      <div id="gained-follower-detail" class="col s12 right">
+        <h5>فالوئرهای بدست آمده</h5>
+        <div class="recommend-detail">
+          <i class="small material-icons">insert_chart</i>
+          <span><%= (((currentServiceLastAnalysis.gained_follower - service.owner.followerCount) > 1000)? prototypes._convertDigitsToPersian(((currentServiceLastAnalysis.gained_follower - service.owner.followerCount) / 1000).toFixed(1).toString()) + ' هزار' : prototypes._convertDigitsToPersian((currentServiceLastAnalysis.gained_follower - service.owner.followerCount).toString()) ) %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+<% }else{ %>
+  <div id="service-in-details" class="col s12 right">
+    <h3 class="bold center service-title">هیچ سرویسی موجود نیست.</h3>
+    <div class="no-service-available margin-center"></div>
+    <h4 class="bold center">شاید سرویس‌هایتان حذف شده است.</h4>
+  </div>
+<% } %>

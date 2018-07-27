@@ -1,0 +1,40 @@
+<div id="checkout-details" class="col s12">
+  <h3 class="bold">بازنگری بر روی سرویس جدید</h3>
+  <div class="col s9 margin-center">
+    <h4 class="bold">شما می‌توانید مطمئین شوید که حساب کاربری‌تان بدرستی متصل گشته است.</h4>
+  </div>
+  <div class="col s11 l7 margin-center checkout-invoice">
+    <h3 class="inv-no">صورت‌حساب شماره <span>#<%= service.invoice.no %></span></h3>
+    <span class="inv-date"><%= service.invoice.date %></span>
+    <div class="aside">
+      <div class="photo">
+        <div class="service-photo" style="background-image: url(<%= service.owner.data.picture %>);"></div>
+      </div>
+      <div class="details">
+        <h3 class="bold"><%= service.owner.data.username %></h3>
+      </div>
+    </div>
+    <table class="inv-content">
+      <tr>
+        <th>سرویس</th>
+        <th>تعداد</th>
+        <th>ماه</th>
+        <th>قیمت</th>
+      </tr>
+      <tr>
+        <% if (typeof service.customized != 'undefined'){ %>
+          <td class="inv-service">شخصی‌سازی شده</td>
+        <% }else{ %>
+          <td class="inv-service"><%= service.plan %></td>
+        <% } %>
+        <td class="inv-qty"><%= service.target.followers / 1000 %> هزار</td>
+        <td class="inv-month"><%= service.invoice.month %></td>
+        <td class="inv-price"><%= service.price.total %> تومان</td>
+      </tr>
+    </table>
+  </div>
+  <div class="col s12 center">
+    <button class="btn btn-large btn-flat waves-effect grey waves-dark white-text session-saved" id="pay-later-btn" type="submit">بعداً</button>
+    <button class="btn btn-large btn-flat waves-effect blue-purple-gradient waves-dark white-text" id="choose-payment-gateway-btn" type="submit">انتخاب نوع درگاه پرداخت</button>
+  </div>
+</div>

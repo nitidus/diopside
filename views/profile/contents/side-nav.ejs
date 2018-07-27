@@ -1,0 +1,52 @@
+<ul id="slide-out" class="side-nav" style="transform: translateX(-100%);">
+  <li><div class="userView">
+    <% if (user.profile) { %>
+      <div class="background">
+        <% if (typeof user.isGem != 'undefined'){ %>
+          <%- user.profile %>
+        <% }else{ %>
+          <img src="<%= user.profile %>">
+        <% } %>
+      </div>
+    <% } else { %>
+      <div class="background veronica"></div>
+    <% } %>
+    <a href="/profile">
+      <% if (user.profile) { %>
+        <div class="peoples-photo profile-photo-bg small regular">
+          <% if (typeof user.isGem != 'undefined'){ %>
+            <%- user.profile %>
+          <% }else{ %>
+            <div class="profile-photo" style="background-image: url(<%= user.profile %>)"></div>
+          <% } %>
+        </div>
+      <% } else { %>
+        <div class="peoples-photo profile-photo-bg small">
+          <svg class="profile-photo no-image" enable-background="new 0 0 409.165 409.164" version="1.1" viewBox="0 0 409.165 409.164" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+          	<g fill="#5b0bbb">
+          		<path d="m204.58 216.67c50.664 0 91.74-48.075 91.74-107.38 0-82.237-41.074-107.38-91.74-107.38-50.668 0-91.74 25.14-91.74 107.38 1e-3 59.303 41.073 107.38 91.74 107.38z"/>
+          		<path d="m407.16 374.72l-46.284-104.26c-2.117-4.771-5.836-8.728-10.465-11.138l-71.83-37.392c-1.584-0.823-3.502-0.663-4.926 0.415-20.316 15.366-44.203 23.488-69.076 23.488-24.877 0-48.762-8.122-69.078-23.488-1.428-1.078-3.346-1.238-4.93-0.415l-71.825 37.392c-4.631 2.41-8.346 6.365-10.465 11.138l-46.284 104.26c-3.191 7.188-2.537 15.412 1.75 22.005 4.285 6.592 11.537 10.526 19.4 10.526h362.86c7.863 0 15.117-3.936 19.402-10.527 4.285-6.592 4.941-14.819 1.75-22.004z"/>
+          	</g>
+          </svg>
+        </div>
+      <% } %>
+    </a>
+    <a href="/profile"><span class="white-text name">
+      <% if (user.name){ %>
+        <%= user.name %>
+      <% } %>
+    </span></a>
+    <a href="/profile"><span class="white-text email"><%= user.email %></span></a>
+  </div></li>
+  <li><a class="waves-effect" href="/profile">داشبورد</a></li>
+  <% if (typeof servicesSession != 'undefined') { %>
+    <li><a class="waves-effect" href="/profile/accounts">حساب‌های کاربری <span class="new badge purple-heart-dark"><%= servicesSession.length %></span></a></li>
+  <% } else { %>
+    <li><a class="waves-effect" href="/profile/accounts">حساب‌های کاربری</a></li>
+  <% } %>
+  <li><a class="waves-effect" href="/profile/wallet">کیف پول</a></li>
+  <!--li><a class="waves-effect" href="#!">Synchronization</a></li-->
+  <li><div class="divider"></div></li>
+  <li><a class="waves-effect" href="/profile/edit">ویرایش پروفایل</a></li>
+  <li><a class="waves-effect" href="/logout">خروج</a></li>
+</ul>

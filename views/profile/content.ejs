@@ -1,0 +1,33 @@
+<div class="loading-overlay" id="loading-overlay"></div>
+<!-- Pace loader-->
+<div class="pace" id="pace">
+    <div class="pace-activity"></div>
+</div>
+
+<%- include('../navigation', {navMode: 'dark-back'}); %>
+
+<% if (sub == 'dashboard') { %>
+<%- include('contents/dashboard'); %>
+<% } %>
+
+<% if (sub == 'unpaid' || sub == 'unpaid/tokenized' || sub == 'accounts' || sub == 'service/tokenized' || sub == 'service/tokenized/scheduled/media' || sub == 'service/tokenized/scheduled/media/upload') { %>
+<%- include('contents/accounts'); %>
+<% } %>
+
+<% if (sub == 'new-account' || sub == 'authorized') { %>
+<%- include('contents/new-account'); %>
+<% } %>
+
+<% if (sub == 'edit') { %>
+<%- include('contents/edit'); %>
+<% } %>
+
+<% if (sub == 'wallet' || sub == 'credit') { %>
+<%- include('contents/wallet'); %>
+<% } %>
+
+<% if (sub == 'change-password') { %>
+<%- include('contents/change-password'); %>
+<% } %>
+
+<%- include('contents/side-nav', {base: base}); %>

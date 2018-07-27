@@ -1,0 +1,19 @@
+<div id="gateway-chooser" class="col s12">
+  <h3 class="bold">چه نوع درگاه پرداختی مورد نیاز شماست؟</h3>
+  <div class="carousel" data-service="زرین‌پال">
+    <a class="carousel-item" href="#" data-service="زرین‌پال">
+      <img class="purple-heart-dark" src="/vendors/images/ui/zarinpal.svg">
+    </a>
+    <a class="carousel-item" href="#" data-service="پی‌پال">
+      <img class="veronica" src="/vendors/images/ui/paypal.svg">
+    </a>
+    <% if (typeof currentUser.balance != 'undefined' && currentUser.balance > 0){ %>
+      <a class="carousel-item" href="#" data-service="کیف پول">
+        <img class="veronica" src="/vendors/images/ui/wallet.svg">
+      </a>
+    <% } %>
+  </div>
+  <div class="col s12 center">
+      <button class="btn btn-large btn-flat waves-effect blue-purple-gradient waves-dark white-text" data-hash-id="<%= currentUser._id %>" id="pay-now-btn" type="submit">پرداخت توسط <span>زرین‌پال</span></button>
+  </div>
+</div>

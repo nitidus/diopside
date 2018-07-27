@@ -1,0 +1,104 @@
+<div id="profile-dashboard" class="parallax-container">
+  <% if (user.profile) { %>
+    <div class="parallax">
+      <div class="background">
+        <% if (typeof user.isGem != 'undefined'){ %>
+          <%- user.profile %>
+        <% }else{ %>
+          <photo style="background-image: url(<%= user.profile %>)"></photo>
+        <% } %>
+      </div>
+      <div class="user-fullname">
+        <% if (typeof user.name != 'undefined'){ %>
+          <h2><%= user.name %></h2>
+        <% } %>
+        <div class="user-details">
+          <span>همه سرویس‌ها <strong><%= constants.prototypes._convertDigitsToPersian((services.inprogress.length + services.completed.length).toString()) %></strong></span>
+        </div>
+      </div>
+    </div>
+  <% } else { %>
+    <div class="parallax dark-orchid">
+      <a class="profile-photo-container" href="/profile"></a>
+      <div class="user-fullname">
+        <% if (typeof user.name != 'undefined'){ %>
+          <h2><%= user.name %></h2>
+        <% } %>
+        <div class="user-details">
+          <span>همه سرویس‌ها <strong><%= constants.prototypes._convertDigitsToPersian((services.inprogress.length + services.completed.length).toString()) %></strong></span>
+        </div>
+      </div>
+    </div>
+  <% } %>
+</div>
+
+<div class="edge-profile direction-rtl">
+  <a id="profile-photo" href="/profile">
+    <% if (user.profile){ %>
+      <div class="peoples-photo profile-photo-bg large regular">
+        <% if (typeof user.isGem != 'undefined'){ %>
+          <%- user.profile %>
+        <% }else{ %>
+          <div class="profile-photo" style="background-image: url(<%= user.profile %>)"></div>
+        <% } %>
+      </div>
+    <% }else{ %>
+      <div class="peoples-photo profile-photo-bg large no-image">
+        <svg class="profile-photo no-image" enable-background="new 0 0 409.165 409.164" version="1.1" viewBox="0 0 409.165 409.164" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+          <g fill="#5b0bbb">
+            <path d="m204.58 216.67c50.664 0 91.74-48.075 91.74-107.38 0-82.237-41.074-107.38-91.74-107.38-50.668 0-91.74 25.14-91.74 107.38 1e-3 59.303 41.073 107.38 91.74 107.38z"/>
+            <path d="m407.16 374.72l-46.284-104.26c-2.117-4.771-5.836-8.728-10.465-11.138l-71.83-37.392c-1.584-0.823-3.502-0.663-4.926 0.415-20.316 15.366-44.203 23.488-69.076 23.488-24.877 0-48.762-8.122-69.078-23.488-1.428-1.078-3.346-1.238-4.93-0.415l-71.825 37.392c-4.631 2.41-8.346 6.365-10.465 11.138l-46.284 104.26c-3.191 7.188-2.537 15.412 1.75 22.005 4.285 6.592 11.537 10.526 19.4 10.526h362.86c7.863 0 15.117-3.936 19.402-10.527 4.285-6.592 4.941-14.819 1.75-22.004z"/>
+          </g>
+        </svg>
+      </div>
+    <% } %>
+  </a>
+</div>
+
+<div id="profile-dashboard-container" class="section white">
+  <div class="row container">
+    <h2 class="header center">آخرین فعالیت‌ها بطور خلاصه</h2>
+    <div class="col s12 l4 col-margin right direction-rtl">
+      <div id="user-balance-detail" class="purple-heart-dark">
+        <h5>موجودی کیف پول</h5>
+        <div class="recommend-detail">
+          <span><sup><i class="material-icons">account_balance_wallet</i></sup><%= constants.prototypes._convertDigitsToPersian(((user.balance > 0)? user.balance : 0).toString()) %> <sub>تومان</sub></span>
+          <div class="last-credits hide-on-large-only"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6 l4 col-margin right direction-rtl">
+      <div id="inprogress-service-detail" class="purple-heart-dark">
+        <h5>در حال انجام</h5>
+        <div class="recommend-detail">
+          <span><sup><i class="material-icons">assistant</i></sup><%= constants.prototypes._convertDigitsToPersian((services.inprogress.length).toString()) %> <sub>سرویس</sub></span>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 m6 l4 col-margin right direction-rtl">
+      <div id="completed-service-detail" class="purple-heart-dark">
+        <h5>به اتمام رسیده</h5>
+        <div class="recommend-detail">
+          <span><sup><i class="material-icons">assignment_turned_in</i></sup><%= constants.prototypes._convertDigitsToPersian((services.completed.length).toString()) %> <sub>سرویس</sub></span>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 col-margin right direction-rtl">
+      <div id="service-time-detail">
+        <div id="service-time-in-detail"></div>
+      </div>
+    </div>
+    <div class="col s12 col-margin right direction-rtl">
+      <div id="services-count-detail">
+        <div id="services-count-in-detail"></div>
+      </div>
+    </div>
+    <div class="col s12 col-margin right direction-rtl">
+      <div id="services-price-detail">
+        <div id="services-price-in-detail"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('profile-hamburger-btn'); %>

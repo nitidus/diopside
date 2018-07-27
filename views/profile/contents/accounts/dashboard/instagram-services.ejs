@@ -1,0 +1,109 @@
+<% var prototypes = constants.prototypes; %>
+
+<div class="parallax-container">
+  <div class="parallax purple-heart-dark">
+    <div class="heading">
+      <i class="fa fa-instagram" aria-hidden="true"></i>
+      <h3 class="bold">اینستاگرام</h3>
+      <div class="details">
+        <span>
+          <% if (instagramServices.length > 1){ %>
+            <strong><%= instagramServices.length %> سرویس‌های فعال</strong>
+          <% }else{ %>
+            <strong><%= instagramServices.length %> سرویس فعال</strong>
+          <% } %>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section medium-white services">
+  <div class="row container">
+    <% instagramServices.forEach(function(service){ %>
+      <% today = (new Date()).getTime()
+      created_at = (new Date(service.created_at)).getTime()
+      date_difference = (today - created_at) / 1000
+      created_at_human_readable = ''
+
+      if (analysis.length > 0){
+        groupedAnalysis = {};
+
+        for (var i = 0; i < analysis.length; i++) {
+          if (!(analysis[i].service._id in groupedAnalysis)){
+            groupedAnalysis[analysis[i].service._id] = [analysis[i]];
+          }else{
+            groupedAnalysis[analysis[i].service._id].push(analysis[i]);
+          }
+        }
+
+        currentServiceAnalysis = groupedAnalysis[service._id];
+
+        currentServiceLastAnalysis = currentServiceAnalysis[0];
+      }else{
+        currentServiceLastAnalysis = {
+          gained_follower: service.owner.followerCount
+        };
+      }
+
+      if (date_difference <= 60) {
+        created_at_human_readable += 'چند لحظه قبل';
+      }else if (date_difference > 60 && date_difference < (60 * 60)) {
+        created_at_human_readable += Math.floor(date_difference / 60) + ' دقیقه قبل';
+      }else if (date_difference >= (60 * 60) && date_difference < (60 * 60 * 24)) {
+        created_at_human_readable += Math.floor(date_difference / (60 * 60)) + ' ساعت قبل';
+      }else if (date_difference >= (60 * 60 * 24) && date_difference < (60 * 60 * 24 * 30)) {
+        created_at_human_readable += Math.floor(date_difference / (60 * 60 * 24)) + ' روز قبل';
+      }else if (date_difference >= (60 * 60 * 24 * 30) && date_difference < (60 * 60 * 24 * 30 * 12)) {
+        created_at_human_readable += Math.floor(date_difference / (60 * 60 * 24 * 30)) + ' ماه قبل';
+      }else if (date_difference >= (60 * 60 * 24 * 12)) {
+        created_at_human_readable += Math.floor(date_difference / (60 * 60 * 24 * 30 * 12)) + ' سال قبل';
+      }
+
+      created_at_human_readable = prototypes._convertDigitsToPersian(created_at_human_readable) %>
+      <div class="aside white" data-hash-id="<%= service._id %>">
+        <a href="/profile/accounts/<%= service._id %>">
+          <div class="photo">
+            <div class="service-photo" style="background-image: url(<%= service.owner.picture %>);"></div>
+          </div>
+          <div class="details">
+            <h3 class="bold"><%= service.owner.username %></h3>
+            <span>
+              <strong><%= prototypes._convertDigitsToPersian((service.owner.mediaCount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")) %></strong> پست‌ها
+            </span>
+            <span>
+              <strong><%= prototypes._convertDigitsToPersian((service.owner.followerCount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")) %></strong> فالوئرها
+            </span>
+            <span>
+              <strong><%= prototypes._convertDigitsToPersian((service.owner.followingCount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")) %></strong> فالوئینگ‌ها
+            </span>
+            <p>
+              <%= service.owner.biography %>
+            </p>
+          </div>
+          <div class="splitter"></div>
+          <div class="details secondary-details">
+            <h3><%= created_at_human_readable %></h3>
+            <span>
+              <strong><%= prototypes._convertDigitsToPersian((service.target.followers).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")) %></strong> هدف‌گذاری شده
+            </span>
+            <span>
+              <strong><%= prototypes._convertDigitsToPersian((currentServiceLastAnalysis.gained_follower - service.owner.followerCount).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")) %></strong> بدست آمده
+            </span>
+            <span>
+              <i class="fa fa-circle-o" aria-hidden="true"></i>
+              <% if (typeof service.customized != 'undefined'){ %>
+                شخصی‌سازی شده
+              <% }else{ %>
+                <%= service.plan.persian %>
+              <% } %>
+            </span>
+            <p>
+              تمامی فالوئرهای بدست آمده
+              <strong><%= prototypes._convertDigitsToPersian((currentServiceLastAnalysis.gained_follower).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")) %></strong>
+            </p>
+          </div>
+        </a>
+      </div>
+    <% }); %>
+  </div>
+</div>
