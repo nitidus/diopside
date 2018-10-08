@@ -1,30 +1,24 @@
+<%
+var prices = constants.prices,
+    prototypes = constants.prototypes;
+%>
 <div id="service-type-chooser" class="col s12">
   <h3 class="bold">طرح مود نظر خود را انتخاب نمایید</h3>
   <div class="carousel" data-plan-fa="تازه‌کار" data-plan-en="Starter">
-    <a class="carousel-item" href="#" data-plan-fa="تازه‌کار" data-plan-en="Starter">
-      <div class="img purple-heart-dark direction-rtl">
-        <h3>۱۰۰۰۰ <span>تومان</span></h3>
-        <span class="service-detail">۲۰۰۰ فالوئر</span>
-        <span class="service-detail">۵۰۰ فالوئر رایگان</span>
-        <span class="service-detail">۱ ماه</span>
-      </div>
-    </a>
-    <a class="carousel-item" href="#" data-plan-fa="نیمه حرفه‌ای" data-plan-en="Intermediate">
-      <div class="img blue-purple direction-rtl">
-        <h3>۱۵۰۰۰ <span>تومان</span></h3>
-        <span class="service-detail">۵۰۰۰ فالوئر</span>
-        <span class="service-detail">۱۰۰۰ فالوئر رایگان</span>
-        <span class="service-detail">۳ ماه</span>
-      </div>
-    </a>
-    <a class="carousel-item" href="#" data-plan-fa="حرفه‌ای" data-plan-en="Enterprise">
-      <div class="img medium-orchid direction-rtl">
-        <h3>۲۵۰۰۰ <span>تومان</span></h3>
-        <span class="service-detail">۱۰۰۰۰ فالوئر</span>
-        <span class="service-detail">۲۰۰۰ فالوئر رایگان</span>
-        <span class="service-detail">۶ ماه</span>
-      </div>
-    </a>
+    <% for(var i = 0; i < prices.length; i++){ %>
+      <% var containerClass = (i === 0)? ' purple-heart-dark':' blue-purple'; %>
+
+      <a class="carousel-item" href="#" data-plan-fa="<%= prices[i].details[0].content %>" data-plan-en="<%= prices[i].name %>">
+        <div class="img<%= containerClass %> direction-rtl">
+          <h3><%= prototypes._convertDigitsToPersian(prices[i].amount.toString()).toLocaleString('ar-EG') %> <span>تومان</span></h3>
+          <% for(var j = 0; j < prices[i].details.length; j++){ %>
+            <% if (typeof prices[i].details[j].required != 'undefined' && prices[i].details[j].required === true){ %>
+              <span class="service-detail"><%= prices[i].details[j].content %></span>
+            <% } %>
+          <% } %>
+        </div>
+      </a>
+    <% } %>
   </div>
   <div class="col s12 center">
       <button class="btn btn-large btn-flat waves-effect blue-purple-gradient waves-dark white-text" id="choose-service-detail-btn" type="submit">مشخص کردن جزئیات طرح <span>تازه‌کار</span></button>

@@ -144,13 +144,13 @@ module.exports = function(app){
               res.redirect('/profile/payment/service/' + lastService.payment.content.authority + '/failed')
             }
           }else{
-            res.render('profile', {currentUser: req.session.currentUser, sub: 'new-account', servicesSession: req.session.services})
+            res.render('profile', {currentUser: req.session.currentUser, sub: 'new-account', servicesSession: req.session.services, constants: CONSTANTS})
           }
         }else{
-          res.render('profile', {currentUser: req.session.currentUser, sub: 'new-account', servicesSession: req.session.services})
+          res.render('profile', {currentUser: req.session.currentUser, sub: 'new-account', servicesSession: req.session.services, constants: CONSTANTS})
         }
       }else{
-        res.render('profile', {currentUser: req.session.currentUser, sub: 'new-account'})
+        res.render('profile', {currentUser: req.session.currentUser, sub: 'new-account', constants: CONSTANTS})
       }
     }else{
       res.redirect('/login')

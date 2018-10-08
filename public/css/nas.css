@@ -257,17 +257,17 @@ blockquote .quote {
   font-size: 1.2rem;
   box-sizing: border-box;
   z-index: 1;
-  bottom: -17px;
+  bottom: -27px;
   left: calc(50% - 28.5%);
   -webkit-transition: background-color .3s ease-in-out, color .3s ease-in-out;
   -moz-transition: background-color .3s ease-in-out, color .3s ease-in-out;
   transition: background-color .3s ease-in-out, color .3s ease-in-out;
 }
 .order-btn-1 {
-  color: #D2364F;
+  color: #EC45BF;
 }
 .order-btn-1:hover, .order-btn-1:focus {
-  background-color: #D2364F;
+  background-color: #EC45BF;
   color: #EBFAFD;
 }
 .order-btn-2 {
@@ -278,10 +278,31 @@ blockquote .quote {
   color: #EBFAFD;
 }
 .order-btn-3 {
-  color: #EC45BF;
+  color: #D2364F;
 }
 .order-btn-3:hover, .order-btn-3:focus {
-  background-color: #EC45BF;
+  background-color: #D2364F;
+  color: #EBFAFD;
+}
+.order-btn-4 {
+  color: #c471ed;
+}
+.order-btn-4:hover, .order-btn-4:focus {
+  background-color: #c471ed;
+  color: #EBFAFD;
+}
+.order-btn-5 {
+  color: #FBD786;
+}
+.order-btn-5:hover, .order-btn-5:focus {
+  background-color: #FBD786;
+  color: #EBFAFD;
+}
+.order-btn-6 {
+  color: #a17fe0;
+}
+.order-btn-6:hover, .order-btn-6:focus {
+  background-color: #a17fe0;
   color: #EBFAFD;
 }
 .detail-view {
@@ -332,22 +353,40 @@ blockquote .quote {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 .insta-type-1 {
-  background: #d6249f;
+  background: #EC45BF;
   background: radial-gradient(circle at 2% 2%, #F9D47C 5%,#EF769F 50%, #EC45BF 60%);
   background: -webkit-radial-gradient(circle at 2% 2%, #F9D47C 5%,#EF769F 50%, #EC45BF 60%);
   background: -moz-radial-gradient(circle at 2% 2%, #F9D47C 5%,#EF769F 50%, #EC45BF 60%);
 }
 .insta-type-2 {
-  background: #d6249f;
+  background: #439BF7;
   background: radial-gradient(circle at 2% 2%, #71F3FD 5%, #57C1F9 45%, #439BF7 60%);
   background: -webkit-radial-gradient(circle at 2% 2%, #71F3FD 5%, #57C1F9 45%, #439BF7 60%);
   background: -moz-radial-gradient(circle at 2% 2%, #71F3FD 5%, #57C1F9 45%, #439BF7 60%);
 }
 .insta-type-3 {
-  background: #d6249f;
+  background: #D2364F;
   background: radial-gradient(circle at 2% 2%, #E5944A 5%, #DA4E43 45%, #D2364F 60%);
   background: -webkit-radial-gradient(circle at 2% 2%, #E5944A 5%, #DA4E43 45%, #D2364F 60%);
   background: -moz-radial-gradient(circle at 2% 2%, #E5944A 5%, #DA4E43 45%, #D2364F 60%);
+}
+.insta-type-4 {
+  background: #c471ed;
+  background: -webkit-radial-gradient(circle at 2% 2%, #f64f59 35%, #c471ed 60%);
+  background: -moz-radial-gradient(circle at 2% 2%, #f64f59 35%, #c471ed 60%);
+  background: radial-gradient(circle at 2% 2%, #f64f59 35%, #c471ed 60%);
+}
+.insta-type-5 {
+  background: #FBD786;
+  background: -webkit-radial-gradient(circle at 2% 2%, #f7797d 35%, #FBD786 60%);
+  background: radial-gradient(circle at 2% 2%, #f7797d 35%, #FBD786 60%);
+  background: -moz-radial-gradient(circle at 2% 2%, #f7797d 35%, #FBD786 60%);
+}
+.insta-type-6 {
+  background: #a17fe0;
+  background: -webkit-radial-gradient(circle at 2% 2%, #59C173 35%, #a17fe0 60%);
+  background: radial-gradient(circle at 2% 2%, #59C173 35%, #a17fe0 60%);
+  background: -moz-radial-gradient(circle at 2% 2%, #59C173 35%, #a17fe0 60%);
 }
 .price-table {
   position: relative;
@@ -361,6 +400,10 @@ blockquote .quote {
   overflow: hidden;
   height: 100%;
   width: 100%;
+}
+
+.prices .col {
+  margin-bottom: 3.5rem;
 }
 
 input[type=range]+.thumb {
@@ -2163,6 +2206,10 @@ nav {
 
 .direction-rtl {
   direction: rtl;
+}
+
+.row.direction-rtl .col {
+  float: right;
 }
 
 nav .nav-wrapper {

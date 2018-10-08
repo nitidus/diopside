@@ -2069,20 +2069,32 @@
 
     $('ul.tabs').tabs('select_tab', 'service-plan-details');
 
-    var targetFollowerCount = 2;
+    var targetFollowerCount = 1;
 
-    switch ($('#service-type-chooser .carousel').data('plan-en').toLowerCase()) {
+    switch ($('#service-type-chooser .carousel').data('plan-en').toLowerCase().replace(/ +/ig,'-')) {
       case 'starter':
       default:
-        targetFollowerCount = 2;
+        targetFollowerCount = 1;
         $('#target-month-1').attr('checked','checked');
         break;
-      case 'intermediate':
-        targetFollowerCount = 5;
+      case 'semi-starter':
+        targetFollowerCount = 3;
         $('#target-month-2').attr('checked','checked');
         break;
+      case 'semi-intermediate':
+        targetFollowerCount = 8;
+        $('#target-month-2').attr('checked','checked');
+        break;
+      case 'intermediate':
+        targetFollowerCount = 15;
+        $('#target-month-3').attr('checked','checked');
+        break;
       case 'enterprise':
-        targetFollowerCount = 10;
+        targetFollowerCount = 25;
+        $('#target-month-3').attr('checked','checked');
+        break;
+      case 'expert':
+        targetFollowerCount = 30;
         $('#target-month-3').attr('checked','checked');
         break;
     }
@@ -2093,7 +2105,7 @@
       start: targetFollowerCount,
       direction: 'rtl',
       range: {
-        'min': 2,
+        'min': 1,
         'max': 50
       },
       tooltips: wNumb({
@@ -3184,15 +3196,24 @@
 
         var planFollower;
 
-        switch (service.plan.english.toLowerCase()) {
+        switch (service.plan.english.toLowerCase().replace(/ +/ig, '-')) {
           case 'starter':
-            planFollower = 2000;
+            planFollower = 1000;
+            break;
+          case 'semi-starter':
+            planFollower = 3000;
+            break;
+          case 'semi-intermediate':
+            planFollower = 8000;
             break;
           case 'intermediate':
-            planFollower = 5000;
+            planFollower = 15000;
             break;
           case 'enterprise':
-            planFollower = 10000;
+            planFollower = 25000;
+            break;
+          case 'expert':
+            planFollower = 30000;
             break;
         }
 
