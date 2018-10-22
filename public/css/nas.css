@@ -646,8 +646,16 @@ input[type=range]::-moz-range-progress {
 .profile-photo-bg.small .profile-photo.no-image {
   margin-top: 10px;
 }
+.profile-photo-bg.small .profile-photo.gem {
+  width: 100%;
+  height: 100%;
+}
 .profile-photo-bg.large .profile-photo.no-image {
   margin-top: 20px;
+}
+.profile-photo-bg.large .profile-photo.gem {
+  width: 100%;
+  height: 100%;
 }
 .profile-photo-bg.large {
   width: 130px !important;
@@ -655,6 +663,10 @@ input[type=range]::-moz-range-progress {
 }
 .profile-photo-bg.large.no-image {
   margin-top: 80px !important;
+}
+.profile-photo-bg.large.gem {
+  width: 100%;
+  height: 100%;
 }
 .profile-photo-bg.large .profile-photo {
   background-position: center 20px;
@@ -1517,6 +1529,15 @@ textarea.materialize-textarea:focus:not([readonly]) {
   margin: 14px 0;
   color: #fff;
 }
+.side-nav .userView .background::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 350px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
 .side-nav .userView .background img, #profile-dashboard .parallax .background photo {
   background-repeat: no-repeat;
   background-position: center;
@@ -1541,6 +1562,15 @@ textarea.materialize-textarea:focus:not([readonly]) {
   width: 104%;
   height: 104%;
   margin: -7px 0 0 -7px;
+}
+#profile-dashboard .parallax .background::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  left: 0;
+  height: 350px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 #profile-dashboard .parallax .user-fullname {
   position: absolute;

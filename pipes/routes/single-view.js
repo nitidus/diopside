@@ -8,7 +8,7 @@ module.exports = function(app){
   var hostname = os.hostname();
 
   if (hostname != 'dv244.bestforweb.net'){
-    hostname = 'http://gemfollow.net';
+    hostname = 'http://localhost:3000';
   }else{
     hostname = 'http://gemfollow.net';
   }
