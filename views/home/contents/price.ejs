@@ -15,7 +15,7 @@ var prices = constants.prices,
           <% for(var i = 0; i < prices.length; i++){ %>
             <div class="col s10 m8 l4">
               <div class="<%= prices[i].style %> price-table">
-                <a class="btn btn-o order-btn-<%= i + 1 %>">سفارش</a>
+                <a class="btn btn-o order-btn-<%= i + 1 %>" href="/profile">سفارش</a>
                 <div class="price-content">
                   <div class="insta-grad-overlay"></div>
                   <div class="insta-grad">
