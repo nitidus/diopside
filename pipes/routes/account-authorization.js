@@ -34,7 +34,7 @@ module.exports = function(app){
 
         res.cookie('service', JSON.stringify(req.session.services[tokenizedService.index]));
 
-        res.render('profile', {currentUser: req.session.currentUser, sub: 'unpaid/tokenized', servicesSession: req.session.services, tokenizedService: tokenizedService})
+        res.render('profile', {currentUser: req.session.currentUser, sub: 'unpaid/tokenized', servicesSession: req.session.services, tokenizedService: tokenizedService, constants: CONSTANTS})
       }else{
         res.redirect('/profile/accounts')
       }
@@ -46,9 +46,9 @@ module.exports = function(app){
   app.get('/profile/accounts/unpaid', function(req, res){
     if (req.session.currentUser){
       if (req.session.services){
-        res.render('profile', {currentUser: req.session.currentUser, sub: 'unpaid', servicesSession: req.session.services})
+        res.render('profile', {currentUser: req.session.currentUser, sub: 'unpaid', servicesSession: req.session.services, constants: CONSTANTS})
       }else{
-        res.render('profile', {currentUser: req.session.currentUser, sub: 'unpaid'})
+        res.render('profile', {currentUser: req.session.currentUser, sub: 'unpaid', constants: CONSTANTS})
       }
     }else{
       res.redirect('/login')
