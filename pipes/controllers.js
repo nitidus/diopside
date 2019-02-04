@@ -22,7 +22,7 @@ let transporter = nodemailer.createTransport({
     }
 })
 
-module.exports = function(app){
+module.exports = function(app, _port){
   app.get('/services/:user_id', function(req, res){
     if (req.params.user_id != ''){
       MongoClient.connect(connectionUrl, function(err, db){

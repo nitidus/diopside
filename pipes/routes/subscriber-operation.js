@@ -1,6 +1,6 @@
 var request = require('request');
 
-module.exports = function(app){
+module.exports = function(app, _port){
   app.get('/login', function(req, res){
     if (req.session.currentUser){
       res.redirect('profile')

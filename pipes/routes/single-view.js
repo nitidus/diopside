@@ -4,11 +4,11 @@ var request = require('request');
 
 var CONSTANTS = require('./constants');
 
-module.exports = function(app){
+module.exports = function(app, _port){
   var hostname = os.hostname();
 
   if (hostname != 'srv.gemfollow.net'){
-    hostname = 'http://localhost:3000';
+    hostname = `http://localhost:${_port}`;
   }else{
     hostname = 'http://gemfollow.net';
   }

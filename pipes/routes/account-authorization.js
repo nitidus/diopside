@@ -15,7 +15,7 @@ String.prototype.replaceAt=function(index, replacement) {
     return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
 }
 
-module.exports = function(app){
+module.exports = function(app, _port){
   app.get('/profile/accounts/unpaid/:token', function(req, res){
     if (req.session.currentUser){
       if (req.session.services){

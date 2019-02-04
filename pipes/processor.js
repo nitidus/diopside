@@ -150,7 +150,7 @@ Array.prototype.randomChild = function(){
   }
 };
 
-module.exports = function(app){
+module.exports = function(app, _port){
   var gemJobs = [];
 
   var hostname = os.hostname();

@@ -37,12 +37,12 @@ app.use(bodyParser.urlencoded({
 app.use('/vendors/', express.static('public'))
 app.use('/libs/', express.static('modules'))
 
-var gem = require('./pipes/gem')(app);
+var gem = require('./pipes/gem')(app, _PORT);
 
-var routes = require('./pipes/routes')(app);
-var controllers = require('./pipes/controllers')(app);
+var routes = require('./pipes/routes')(app, _PORT);
+var controllers = require('./pipes/controllers')(app, _PORT);
 
-var processor = require('./pipes/processor')(app);
+var processor = require('./pipes/processor')(app, _PORT);
 
 app.listen(_PORT, function(){
   console.log(`Gem Follow is running on port ${_PORT}.`);

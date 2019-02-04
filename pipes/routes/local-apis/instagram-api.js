@@ -34,7 +34,7 @@ function removeTemporaryDirectory(){
   }
 }
 
-module.exports = function(app){
+module.exports = function(app, _port){
   app.post('/api/instagram/media/:media_id/likes', function(req, res){
     if (req.body.access_token != '' && req.params.media_id){
       MongoClient.connect(connectionUrl, function(err, db){

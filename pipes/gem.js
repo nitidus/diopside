@@ -10,7 +10,7 @@ var ObjectID = require('mongodb').ObjectID
 let connectionUrl = 'mongodb://localhost:27017/gem-follow'
 let GEM_KEY = "$2a$08$8kGpKAcmDOsZtz5la65ywuGmpbNEaYeNBv.eNfQ/2jd9OzIRq34u."
 
-module.exports = function(app){
+module.exports = function(app, _port){
   MongoClient.connect(connectionUrl, function(err, db){
     assert.equal(null, err);
 

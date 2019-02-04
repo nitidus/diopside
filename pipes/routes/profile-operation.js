@@ -9,7 +9,7 @@ var CONSTANTS = require('./constants');
 let connectionUrl = 'mongodb://localhost:27017/gem-follow'
 let GEM_KEY = "$2a$08$8kGpKAcmDOsZtz5la65ywuGmpbNEaYeNBv.eNfQ/2jd9OzIRq34u."
 
-module.exports = function(app){
+module.exports = function(app, _port){
   app.get('/profile', function(req, res){
     if (req.session.currentUser){
       var credit = req.session.credit;
