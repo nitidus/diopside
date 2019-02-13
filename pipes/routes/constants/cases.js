@@ -1,6 +1,7 @@
 var CASES = [
   {
     title: "زمان‌بندی‌ها",
+    name: "schedules",
     background: {
       color: "deep-purple darken-1",
       photo: "./vendors/images/cases/schedules/schedule-posts-case.png"
@@ -28,6 +29,7 @@ var CASES = [
   },
   {
     title: "هشتگ‌ها",
+    name: "hashtags",
     background: {
       color: "yellow",
       photo: "./vendors/images/cases/hashtags/hashtags-case.png"
@@ -51,6 +53,7 @@ var CASES = [
   },
   {
     title: "یادگیری ماشینی",
+    name: "machine-learning",
     background: {
       color: "blue",
       photo: "./vendors/images/cases/machine-learning/machine-learning-case.png"
@@ -74,6 +77,7 @@ var CASES = [
   },
   {
     title: "موقعیت‌های جغرافیایی",
+    name: "locations",
     background: {
       color: "deep-orange",
       photo: "./vendors/images/cases/locations/locations-case.png"
@@ -97,6 +101,7 @@ var CASES = [
   },
   {
     title: "سیستم نظردهی هوشمند",
+    name: "commenting",
     background: {
       color: "red darken-1",
       photo: "./vendors/images/cases/commenting/commenting-case.png"
@@ -132,6 +137,7 @@ var CASES = [
   },
   {
     title: "سیستم لایکینگ هوشمند",
+    name: "liking",
     background: {
       color: "green",
       photo: "./vendors/images/cases/liking/liking-case.png"

@@ -12,7 +12,7 @@
     <div class="container blocks spacious full-width">
         <div class="row">
           <% for(var i = 0; i < cases.length; i++){ %>
-            <% var caseFileName = cases[i].title.toLowerCase(); %>
+            <% var caseFileName = cases[i].name.toLowerCase(); %>
             <% caseFileName = caseFileName.replace(/ /g, '-'); %>
 
             <div class="col s12 m6 l4 right">
@@ -27,10 +27,10 @@
     </div>
 
     <% for(var i = 0; i < cases.length; i++){ %>
-        <% var caseFileName = cases[i].title.toLowerCase(); %>
+        <% var caseFileName = cases[i].name.toLowerCase(); %>
         <% caseFileName = caseFileName.replace(/ /g, '-'); %>
 
-        <!-- <%= cases[i].title %> modal-->
+        <!-- <%= cases[i].name %> modal-->
         <div class="modal bottom-sheet <%= cases[i].background.color %>" id="<%= caseFileName %>">
             <div class="modal-close absolute">&times;</div>
             <div class="modal-content">
@@ -57,32 +57,32 @@
                     </div>
                     <div class="row">
                         <div class="col s12 m10 offset-m1 l6 offset-l3 right">
-                            <h3>Overview</h3>
+                            <h3>نیم‌نگاه</h3>
                             <p class="flow-text"><%= cases[i].overview %></p>
                         </div>
                         <div class="col s12 m10 offset-m1 l6 offset-l3 right">
-                            <h3>Solution</h3>
+                            <h3>راهکار</h3>
                             <p class="flow-text"><%= cases[i].solution %></p>
                         </div>
                     </div>
                     <div class="row flow-text modal-nav-container">
                       <% if (i == 0){ %>
-                        <% var nextCaseFileName = cases[i + 1].title.toLowerCase(); %>
+                        <% var nextCaseFileName = cases[i + 1].name.toLowerCase(); %>
                         <% nextCaseFileName = nextCaseFileName.replace(/ /g, '-'); %>
 
                         <div class="col s12 l6 offset-l6 left">
                             <a class="right modal-nav" href="#<%= nextCaseFileName %>" data-next-modal="<%= nextCaseFileName %>">&rarr; ویژگی بعدی</a>
                         </div>
                       <% }else if (i == cases.length - 1){ %>
-                        <% var previousCaseFileName = cases[i - 1].title.toLowerCase(); %>
+                        <% var previousCaseFileName = cases[i - 1].name.toLowerCase(); %>
                         <% previousCaseFileName = previousCaseFileName.replace(/ /g, '-'); %>
 
                         <div class="col s12 l6 margin-on-medium-and-down left left-align">
                             <a class="modal-nav" href="#<%= previousCaseFileName %>" data-previous-modal="<%= previousCaseFileName %>">ویژگی قبلی &larr;</a>
                         </div>
                       <% }else{ %>
-                        <% var nextCaseFileName = cases[i + 1].title.toLowerCase(); %>
-                        <% var previousCaseFileName = cases[i - 1].title.toLowerCase(); %>
+                        <% var nextCaseFileName = cases[i + 1].name.toLowerCase(); %>
+                        <% var previousCaseFileName = cases[i - 1].name.toLowerCase(); %>
                         <% nextCaseFileName = nextCaseFileName.replace(/ /g, '-'); %>
                         <% previousCaseFileName = previousCaseFileName.replace(/ /g, '-'); %>
 
