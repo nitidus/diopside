@@ -18,9 +18,11 @@
     <div class="container">
         <div class="row center">
             <div class="col s12 right">
-                <h2>آخرین مطالب بلاگ</h2>
-                <h3>همیشه از آخرین اخبار ما مطلع باشید</h3>
-                <ul class="posts">
+                <h2>منتظر اخبار از طرف ما هستید؟</h2>
+                <h3>ما در حال تلاش برای رساندن اخبار، آموزش‌ها و موارد<br/>دیگری که نیاز به بیان شدن دارند،<br/>به شما هستیم، پس منتظر خبرهای خوب از طرف ما باشید.</h3>
+                <!--h2>آخرین مطالب بلاگ</h2-->
+                <!--h3>همیشه از آخرین اخبار ما مطلع باشید</h3-->
+                <!--ul class="posts">
                   <% for(var i = 0; i < lastStories.length; i++){ %>
                     <% var storyFileName = lastStories[i].title.toLowerCase(); %>
                     <% storyFileName = storyFileName.replace(/ /g, '-'); %>
@@ -31,18 +33,18 @@
                         </a>
                     </li>
                   <% } %>
-                </ul>
+                </ul-->
             </div>
         </div>
     </div>
-    <div class="posts-covers">
+    <!--div class="posts-covers">
       <% for(var i = 0; i < lastStories.length; i++){ %>
         <% var storyFileName = lastStories[i].title.toLowerCase(); %>
         <% storyFileName = storyFileName.replace(/ /g, '-'); %>
 
         <div class="<%= storyFileName %>" style="background-image: url(<%= lastStories[i].background.photo %>)"></div>
       <% } %>
-    </div>
+    </div-->
 
     <% for(var i = 0; i < lastStories.length; i++){ %>
       <% var storyFileName = lastStories[i].title.toLowerCase(); %>
@@ -50,7 +52,7 @@
       <% storyCreatedAt = new Date(lastStories[i].created_at); %>
 
       <!-- <%= stories[i].title %> -->
-      <div class="modal table-section bottom-sheet" id="<%= storyFileName %>">
+      <!--div class="modal table-section bottom-sheet" id="<%= storyFileName %>">
           <div class="modal-close absolute">&times;</div>
           <div class="modal-content">
               <div class="container">
@@ -103,6 +105,6 @@
                 </div>
               </div>
           </div>
-      </div>
+      </div-->
     <% } %>
 </section>
