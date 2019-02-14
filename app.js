@@ -13,7 +13,7 @@ var GEM_KEY = "$2a$08$8kGpKAcmDOsZtz5la65ywuGmpbNEaYeNBv.eNfQ/2jd9OzIRq34u."
 
 var httpServer = http.createServer(app);
 
-const _PORT = process.env.PORT || 8080;
+const _PORT = process.env.PORT || 19536;
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
