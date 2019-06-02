@@ -2643,10 +2643,9 @@ $(document).on('ready', function () {
 
       if (signupEmail != '' && signupPassword != ''){
         var alphabeticalyCheck = signupPassword.match(/[a-zA-Z]+/g),
-            numericalCheck = signupPassword.match(/[0-9]+/g),
-            specialCharsCheck = signupPassword.match(/[!#$%@^&*()\/_~?><]+/g);
+            numericalCheck = signupPassword.match(/[0-9]+/g);
 
-        if (alphabeticalyCheck != null && numericalCheck != null & specialCharsCheck != null){
+        if (alphabeticalyCheck != null && numericalCheck != null){
           if (signupPassword === signupRepassword){
             var today = (new Date()).toISOString(),
                 confirmationId = Math.floor(Math.random() * (999 - 100 + 1) + 100) + '-' + Math.floor(Math.random() * (999 - 100 + 1) + 100),
@@ -2688,7 +2687,7 @@ $(document).on('ready', function () {
             Materialize.toast('لطفاً مطمئن شوید که گذرواژه و تایید آن با یکدیگر برابر هستند!', 4000);
           }
         }else{
-          Materialize.toast('حروف بزرگ و کوچک، اعداد و یکسری از کاراکترهای خاص مجاز می‌باشد!', 4000);
+          Materialize.toast(0, 'حروف بزرگ، کوچک و اعداد مجاز می‌باشند.');
         }
       }else{
         var message = '';
